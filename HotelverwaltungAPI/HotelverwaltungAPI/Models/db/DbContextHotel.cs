@@ -10,6 +10,8 @@ namespace HotelverwaltungAPI.Models.db
     {
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Bill> Bills { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<RoomBill> RoomsBills { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var server = "localhost";

@@ -12,6 +12,14 @@ namespace HotelverwaltungAPI.Models.db
         public DbSet<Bill> Bills { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomBill> RoomsBills { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<RoomBill>().HasKey(table => new {
+                table.RoomId,
+                table.BillId
+            });
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var server = "localhost";

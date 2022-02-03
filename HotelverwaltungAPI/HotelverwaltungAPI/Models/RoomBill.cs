@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,11 +14,9 @@ namespace HotelverwaltungAPI.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        [Key]
         public int RoomId { get; set; }
         public Room Room { get; set; }
 
-        [Key]
         public int BillId { get; set; }
         public Bill Bill { get; set; }
     }

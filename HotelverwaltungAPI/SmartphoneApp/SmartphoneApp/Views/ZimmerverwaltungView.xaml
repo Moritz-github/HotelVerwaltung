@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converter="clr-namespace:SmartphoneApp.Models.Converter"
+             x:Class="SmartphoneApp.Views.ZimmerverwaltungView">
+    <ContentPage.Resources>
+        <converter:BoolToCheckmarkConverter x:Key="BoolToCheckMark" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <CollectionView Margin="10,30,10,20" ItemsSource="{Binding Rooms}">
+                <CollectionView.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Text="ID" />
+                        <Label Grid.Column="1" Text="Anzahl Betten" />
+                        <Label Grid.Column="2" Text="Küche" />
+                        <Label Grid.Column="3" Text="Balkon" />
+                        <Label Grid.Column="4" Text="Terasse" />
+                        <Label Grid.Column="5" Text="Preis pro Nacht" />
+                        
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Label Grid.Column="0" Text="{Binding RoomId}" />
+                            <Label Grid.Column="1" Text="{Binding CountBeds}" />
+                            <Label Grid.Column="2" Text="{Binding HasKitchen, Converter={StaticResource BoolToCheckMark}}" />
+                            <Label Grid.Column="3" Text="{Binding HasBalcony, Converter={StaticResource BoolToCheckMark}}" />
+                            <Label Grid.Column="4" Text="{Binding HasTerrac, Converter={StaticResource BoolToCheckMark}}" />
+                            <Label Grid.Column="5" Text="{Binding NightlyPrice}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -29,9 +29,23 @@ namespace SmartphoneApp.Models.services
 
         public async Task<List<Room>> getAllRooms()
         {
-            String url = serverURL + "/api/Rooms";
-            var resp = await _client.GetAsync(serverURL);
-            return JsonConvert.DeserializeObject<List<Room>>(await resp.Content.ReadAsStringAsync());
+            try
+            {
+                String url = serverURL + "/api/Rooms";
+                var resp = await _client.GetAsync(serverURL);
+                if (resp.IsSuccessStatusCode)
+                {
+                    return JsonConvert.DeserializeObject<List<Room>>(await resp.Content.ReadAsStringAsync());
+                }
+                else
+                {
+                    return null;
+                }
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
     }

@@ -1,58 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converter="clr-namespace:SmartphoneApp.Models.Converter"
-             x:Class="SmartphoneApp.Views.ZimmerverwaltungView">
-    <ContentPage.Resources>
-        <converter:BoolToCheckmarkConverter x:Key="BoolToCheckMark" />
-    </ContentPage.Resources>
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotelApp.Views.ShowAllFreeRoomsView">
     <ContentPage.Content>
-        <StackLayout>
-
-            <CollectionView Margin="10,30,10,20" ItemsSource="{Binding Rooms}">
+        <StackLayout Margin="50">
+            <Label Text="Startdatum" HorizontalTextAlignment="Start" FontAttributes="Bold" Margin="0, 0, 20, 0" VerticalTextAlignment="Center" />
+            <DatePicker Grid.Row="5" Grid.Column="1" VerticalOptions="Center" Date="{Binding StartDate}"/>
+            <Label Text="Enddatum" HorizontalTextAlignment="Start" FontAttributes="Bold" Margin="0, 0, 20, 0" VerticalTextAlignment="Center" />
+            <DatePicker Grid.Row="5" Grid.Column="1" VerticalOptions="Center"  MinimumDate="{Binding EndDate}" Date="{Binding EndDate}"/>
+            <CollectionView ItemsSource="{Binding FreeRooms}">
                 <CollectionView.Header>
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
-
-                        <Label Grid.Column="0" Text="ID" />
-                        <Label Grid.Column="1" Text="Anzahl Betten" />
-                        <Label Grid.Column="2" Text="Küche" />
-                        <Label Grid.Column="3" Text="Balkon" />
-                        <Label Grid.Column="4" Text="Terasse" />
-                        <Label Grid.Column="5" Text="Preis pro Nacht" />
-                        
+                        <Label Text="Room-ID" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Padding="0,0,0, 20" />
+                        <Label Text="Anzahl Betten" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" Padding="0,0,0, 20" />
+                        <Label Text="Küche" Grid.Row="0" Grid.Column="2" FontAttributes="Bold" Padding="0,0,0, 20" />
+                        <Label Text="Balkon" Grid.Row="0" Grid.Column="3" FontAttributes="Bold" Padding="0,0,0, 20" />
+                        <Label Text="Terrasse" Grid.Row="0" Grid.Column="4" FontAttributes="Bold" Padding="0,0,0, 20" />
+                        <Label Text="Preis pro Nacht" Grid.Row="0" Grid.Column="5" FontAttributes="Bold" Padding="0,0,0, 20" />
                     </Grid>
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
-                            
-                            <Label Grid.Column="0" Text="{Binding RoomId}" />
-                            <Label Grid.Column="1" Text="{Binding CountBeds}" />
-                            <Label Grid.Column="2" Text="{Binding HasKitchen, Converter={StaticResource BoolToCheckMark}}" />
-                            <Label Grid.Column="3" Text="{Binding HasBalcony, Converter={StaticResource BoolToCheckMark}}" />
-                            <Label Grid.Column="4" Text="{Binding HasTerrac, Converter={StaticResource BoolToCheckMark}}" />
-                            <Label Grid.Column="5" Text="{Binding NightlyPrice}" />
+                            <Label Text="{Binding RoomId}" Grid.Row="0" Grid.Column="0" />
+                            <Label Text="{Binding CountBeds}" Grid.Row="0" Grid.Column="1" />
+                            <Label Text="{Binding Kitchen}" Grid.Row="0" Grid.Column="2" />
+                            <Label Text="{Binding Balcony}" Grid.Row="0" Grid.Column="3" />
+                            <Label Text="{Binding Terrace}" Grid.Row="0" Grid.Column="4" />
+                            <Label Text="{Binding PricePerNight}" Grid.Row="0" Grid.Column="5" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-                
             </CollectionView>
-            
+            <Button Text="Zurück zu allen Räumen" Command="{Binding BackToAllRooms}" IsEnabled="True" VerticalOptions="Center" Padding="15" Margin="100, 30, 100, 0" Grid.Row="0" Grid.Column="0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HotelverwaltungAPI.Models
+namespace SmartphoneApp.Models
 {
     public class Guest 
     {
@@ -17,7 +17,7 @@ namespace HotelverwaltungAPI.Models
             Email = email;
         }
 
-        public int GuestID { get; set; }
+        public int GuestID { get; set; } = 0;
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public DateTime Birthdate { get; set; }

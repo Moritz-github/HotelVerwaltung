@@ -16,7 +16,8 @@
 
                 <StackLayout Grid.Column="1">
                     <Button Command="{Binding CmdShowZimmerverwaltung}" Text="Zimmerverwaltung öffnen"></Button>
-                    <Button Command="{Binding CmdShowUserverwaltung}" Text="Userverwaltung öffnen"></Button>
+                    <Button Command="{Binding CmdCreateUser}" Text="User erstellen"></Button>
+                    <Button Command="{Binding CmdShowGuests}" Text="Alle Gäste anzeigen"></Button>
                 </StackLayout>
 
             </Grid>

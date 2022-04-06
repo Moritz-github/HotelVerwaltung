@@ -16,13 +16,21 @@ namespace SmartphoneApp.ViewModels
             ZimmerverwaltungView view = new ZimmerverwaltungView();
 
             await Application.Current.MainPage.Navigation.PushModalAsync(view);
+
         }
 
-        public ICommand CmdShowUserverwaltung => new Command(ShowUserverwaltung);
+        public ICommand CmdShowGuests => new Command(ShowGuests);
 
-        private async void ShowUserverwaltung()
+        public ICommand CmdCreateUser => new Command(async () =>
         {
-            UserverwaltungView view = new UserverwaltungView();
+            CreateUserView view = new CreateUserView();
+
+            await Application.Current.MainPage.Navigation.PushModalAsync(view);
+        });
+
+        private async void ShowGuests()
+        {
+            AlleGaesteAnzeigen view = new AlleGaesteAnzeigen();
 
             await Application.Current.MainPage.Navigation.PushModalAsync(view);
         }

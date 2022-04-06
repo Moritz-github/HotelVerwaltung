@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartphoneApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,14 @@ using Xamarin.Forms.Xaml;
 namespace SmartphoneApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UserverwaltungView : ContentPage
+    public partial class CreateUserView : ContentPage
     {
-        public UserverwaltungView()
+        CreateGuestViewModel _vm = new CreateGuestViewModel();
+        public CreateUserView()
         {
             InitializeComponent();
+            this.BindingContext = _vm;
+
         }
     }
 }

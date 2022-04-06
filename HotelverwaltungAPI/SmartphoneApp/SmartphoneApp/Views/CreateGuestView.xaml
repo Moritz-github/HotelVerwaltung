@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartphoneApp.Views.CreateUserView">
+    <ContentPage.Content>
+        <StackLayout Margin="50, 30, 50, 30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Vorname" Grid.Row="0" Grid.Column="1"></Label>
+                <Entry Text="{Binding Firstname}" Grid.Row="0" Grid.Column="2"></Entry>
+
+                <Label Text="Nachname" Grid.Row="1" Grid.Column="1"></Label>
+                <Entry Text="{Binding Lastname}" Grid.Row="1" Grid.Column="2"></Entry>
+
+                <Label Text="Geburtsdatum" Grid.Row="2" Grid.Column="1"></Label>
+                <DatePicker Date="{Binding Birthdate}" Grid.Row="2" Grid.Column="2"></DatePicker>
+
+                <Label Text="Sprache" Grid.Row="3" Grid.Column="1"></Label>
+                <Entry Text="{Binding Language}" Grid.Row="3" Grid.Column="2"></Entry>
+
+                <Label Text="Email" Grid.Row="4" Grid.Column="1"></Label>
+                <Entry Text="{Binding Email}" Grid.Row="4" Grid.Column="2"></Entry>
+
+
+                <Label Text="Gäste ID" Grid.Row="5" Grid.Column="1"></Label>
+                <Entry Text="{Binding Id}" Grid.Row="5" Grid.Column="2"></Entry>
+
+                <Button Text="Erstellen" Command="{Binding CmdCreate}" Grid.Row="6" Grid.ColumnSpan="4"></Button>
+                <Button Text="Zurück" Command="{Binding CmdBack}" Grid.Row="7" Grid.ColumnSpan="4"></Button>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

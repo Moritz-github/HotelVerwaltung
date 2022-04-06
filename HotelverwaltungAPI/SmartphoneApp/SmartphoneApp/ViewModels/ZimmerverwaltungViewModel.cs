@@ -1,4 +1,5 @@
 ﻿using SmartphoneApp.Models;
+using SmartphoneApp.Models.services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,18 +24,44 @@ namespace SmartphoneApp.ViewModels
             }
         }
 
-        // Commands
-        public ICommand CmdClose => new Command(Close);
+        private DateTime startDate;
+        private DateTime endDate;
 
-        private void Close()
+        public DateTime StartDate
         {
-            Application.Current.MainPage.Navigation.PopModalAsync();
+            get { return this.startDate; }
+            set
+            {
+                this.startDate = value;
+                this.RaisePropertyChanged(nameof(StartDate));
+            }
+        }
+        public DateTime EndDate
+        {
+            get { return this.endDate; }
+            set
+            {
+                this.endDate = value;
+                this.RaisePropertyChanged(nameof(EndDate));
+            }
         }
 
+        public ICommand CmdLaden => new Command(Laden);
+
+        async void Laden()
+        {
+            this.Rooms = await APIController.getInstance().getFreeRoomsByDate(StartDate, EndDate);
+        }
+
+        public ICommand CmdBack => new Command(async () =>
+        {
+            await App.Current.MainPage.Navigation.PopModalAsync();
+        });
 
         public ZimmerverwaltungViewModel()
         {
-            Rooms.Add(new Room(5, 5, false, false, true, 25.0M));
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now;
         }
     }
 }
